@@ -1,0 +1,3 @@
+drop_id,retailer,source,zip_code,price_observed,observed_at,notes
+1,Target,app,60491,49.99,2026-03-27T20:16:04.167692,ETB restock via Target app
+2,Walmart,app,00000,59.99,2026-04-09T02:01:22.939714,First Partner Collection and Mega Lucario Poster Collction and Prismatic ETB

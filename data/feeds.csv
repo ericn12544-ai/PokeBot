@@ -1,0 +1,7 @@
+feed_id,feed_name,feed_url,keywords,active
+pokemondb,PokemonDB News,https://pokemondb.net/news/feed,"Elite Trainer Box|ETB|Pokemon Center ETB|Super Premium Collection|Premium Collection|Booster Bundle|Booster Box|Collection Box|Build and Battle Box|Mini Tin|Tin|SPC|UPC",TRUE
+pokeguardian,PokeGuardian,https://www.pokeguardian.com/rss,"Elite Trainer Box|ETB|Pokemon Center ETB|Super Premium Collection|Premium Collection|Booster Bundle|Booster Box|Collection Box|Build and Battle Box|Mini Tin|Tin|SPC|UPC",TRUE
+tcgplayer,TCGPlayer News,https://www.tcgplayer.com/feeds/news.xml,"Elite Trainer Box|ETB|Pokemon Center ETB|Super Premium Collection|Premium Collection|Booster Bundle|Booster Box|Collection Box|Build and Battle Box|Mini Tin|Tin|SPC|UPC",TRUE
+tcginsider,TCGInsider,https://www.tcginsider.com/feed/,"Elite Trainer Box|ETB|Pokemon Center ETB|Super Premium Collection|Premium Collection|Booster Bundle|Booster Box|Collection Box|Build and Battle Box|Mini Tin|Tin|SPC|UPC",TRUE
+pokenews,Official Pokemon,https://www.pokemon.com/us/blog/feed/,"Elite Trainer Box|ETB|Pokemon Center ETB|Super Premium Collection|Premium Collection|Booster Bundle|Booster Box|Collection Box|Build and Battle Box|Mini Tin|Tin|SPC|UPC",TRUE
+pocketmonsters,PocketMonsters.net,https://www.pokemon.com/en/rss/news/,"Elite Trainer Box|ETB|Pokemon Center ETB|Super Premium Collection|Premium Collection|Booster Bundle|Booster Box|Collection Box|Build and Battle Box|Mini Tin|Tin|SPC|UPC",TRUE

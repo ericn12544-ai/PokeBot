@@ -1,0 +1,10 @@
+.venv/
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+*.log
+agent/run_agent.lock
+agent_start_log.txt
+SCHEDULER_PROOF.txt
+.vscode/

@@ -1,0 +1,70 @@
+import pandas as pd
+from datetime import datetime, timedelta
+from zoneinfo import ZoneInfo
+
+def load_scheduled(path="data/scheduled_drops.csv"):
+    try:
+        return pd.read_csv(path)
+    except FileNotFoundError:
+        return pd.DataFrame()
+
+def load_schedule_history(path="data/schedule_alert_history.csv"):
+    try:
+        return pd.read_csv(path)
+    except FileNotFoundError:
+        return pd.DataFrame(columns=["event_id","fire_date","fired_at"])
+
+def save_schedule_history(df, path="data/schedule_alert_history.csv"):
+    df.to_csv(path, index=False)
+
+def should_fire(now, row):
+    if not bool(row.get("active", True)):
+        return False
+
+    tz = ZoneInfo(str(row["timezone"]))
+    local_now = now.astimezone(tz)
+
+    # Match day-of-week
+    if local_now.strftime("%A") != str(row["day_of_week"]):
+        return False
+
+    # Target alert time today
+    hh, mm = map(int, str(row["time_local"]).split(":"))
+    target = local_now.replace(hour=hh, minute=mm, second=0, microsecond=0)
+
+    lead = int(row.get("lead_minutes", 0))
+    window_start = target - timedelta(minutes=lead)
+    window_end = target + timedelta(minutes=1)
+
+    return window_start <= local_now <= window_end
+
+def schedule_key(row, now):
+    tz = ZoneInfo(str(row["timezone"]))
+    return now.astimezone(tz).date().isoformat()  # fire once per day
+
+def run_scheduled(now_utc, send_func):
+    sched = load_scheduled()
+    if sched.empty:
+        return 0
+
+    hist = load_schedule_history()
+    sent = 0
+
+    for _, row in sched.iterrows():
+        if not should_fire(now_utc, row):
+            continue
+
+        fire_date = schedule_key(row, now_utc)
+        already = ((hist["event_id"] == row["event_id"]) & (hist["fire_date"] == fire_date)).any()
+        if already:
+            continue
+
+        title = f"⏰ Scheduled Drop: {row['event_name']}"
+        msg = str(row.get("message",""))
+        send_func(title, msg)
+
+        hist.loc[len(hist)] = [row["event_id"], fire_date, now_utc.isoformat(timespec="seconds")]
+        sent += 1
+
+    save_schedule_history(hist)
+    return sent

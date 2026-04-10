@@ -1,0 +1,3 @@
+event_id,event_name,retailer,day_of_week,time_local,timezone,lead_minutes,active,message
+walmart_wed,Walmart Wednesday (TCG reminder),Walmart,Wednesday,20:00,America/Chicago,15,TRUE,"Heads up: Walmart Wednesday window approaching"
+pokemon_pre,Pokemon Set Release Reminder,General,Friday,08:50,America/Chicago,15,TRUE,"Set release morning — check MSRP sources"
